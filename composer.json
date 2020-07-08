@@ -1,29 +1,29 @@
 {
-    "name": "gwdhost/mail-testing",
-    "description": "A Laravel Nova tool.",
-    "keywords": [
-        "laravel",
-        "nova"
-    ],
-    "license": "MIT",
-    "require": {
-        "php": ">=7.1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Gwdhost\\MailTesting\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Gwdhost\\MailTesting\\ToolServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "gwdhost/nova-mail-testing",
+  "description": "A Laravel Nova Mail testing tool.",
+  "keywords": [
+    "laravel",
+    "nova"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gwdhost\\MailTesting\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Gwdhost\\MailTesting\\ToolServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
