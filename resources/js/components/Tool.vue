@@ -2,7 +2,7 @@
     <div>
         <heading class="mb-6">Mail Testing</heading>
 
-        <div v-if="!selected_mail_id" class="form-group w-1/2 pr-4">
+        <div class="form-group w-1/2 pr-4">
             <label class="form-label">Choose mail to test:</label>
             <select v-model="selected_mail_id" class="form-control">
                 <option value="">Choose the mail</option>
