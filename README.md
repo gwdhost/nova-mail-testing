@@ -3,6 +3,15 @@
 This tool will give you an view to show mail templates with correct data, which you can setup.
 The only thing you need to do is to setup the config file after that every thing will take care of it self.
 
+## To install you can run the following:
+
+```
+composer require gwdhost/nova-mail-testing
+
+```
+
+Here you can see an example of the mail testing config file.
+
 ```php
 return [
     'mails' => [
