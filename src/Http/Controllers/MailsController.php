@@ -95,6 +95,7 @@ class MailsController extends Controller
             $items->push([
                 'id' => $mail['class'],
                 'name' => $mail['label'] ?? $mail['class'],
+                'description' => $mail['description'] ?? null,
                 'class' => $mail['class'],
                 'args' => array_map(function($arg, $index) use ($nova_request){
 

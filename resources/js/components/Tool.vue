@@ -10,10 +10,10 @@
             </select>
         </div>
 
+        <div class="form-group mb-3" v-if="mail && mail.description" v-html="mail.description"></div>
+
         <div v-if="mail" class="flex mail-template">
             <div class="mails-fields mb-3 w-1/2 pr-4">
-                <h4 class="title">Selected mail: {{ mail.name }}</h4>
-
                 <div class="mail-field" v-for="(arg, index) in mail.args" :key="arg.id">
                     <div class="form-group mail-field__wrapper mail-field__wrapper--nova" v-if="arg.nova">
                         <label class="form-label mail-field__label">Mail class argument {{ index + 1 }}: ({{ arg.label || arg.model }})</label>
@@ -23,7 +23,7 @@
                             <option v-for="item in arg.items" :key="item.id" :value="item.id">{{ item[arg.title] }}</option>
                         </select>
                     </div>
-                    <div class="form-group mail-field__wrapper mail-field__wrapper--custom" v-if="arg.type">
+                    <div class="form-group mail-field__wrapper mail-field__wrapper--custom" v-if="arg.type && arg.type !== 'hidden'">
                         <label class="form-label mail-field__label">Mail class argument {{ index + 1 }}: ({{ arg.label }})</label>
 
                         <select class="form-control" v-model="arg.value" v-if="arg.type === 'select'">
