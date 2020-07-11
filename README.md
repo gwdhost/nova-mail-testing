@@ -9,6 +9,14 @@ The only thing you need to do is to setup the config file after that every thing
 composer require gwdhost/nova-mail-testing
 ```
 
+And then add the following to the `tools()` method array in the `NovaServiceProvider`:
+
+```php
+return [
+     new \Gwdhost\MailTesting\MailTesting()
+];
+```
+
 Here you can see an example of the mail testing config file.
 
 ```php
