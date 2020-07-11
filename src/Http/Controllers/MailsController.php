@@ -94,7 +94,7 @@ class MailsController extends Controller
         foreach ($mails as $mail) {
             $items->push([
                 'id' => $mail['class'],
-                'name' => $mail['class'],
+                'name' => $mail['label'] ?? $mail['class'],
                 'class' => $mail['class'],
                 'args' => array_map(function($arg, $index) use ($nova_request){
 

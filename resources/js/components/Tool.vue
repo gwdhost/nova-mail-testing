@@ -2,7 +2,7 @@
     <div>
         <heading class="mb-6">Mail Testing</heading>
 
-        <div v-if="!selected_mail_id" class="form-group">
+        <div v-if="!selected_mail_id" class="form-group w-1/2 pr-4">
             <label class="form-label">Choose mail to test:</label>
             <select v-model="selected_mail_id" class="form-control">
                 <option value="">Choose the mail</option>
@@ -10,13 +10,13 @@
             </select>
         </div>
 
-        <div v-if="mail">
-            <div class="mails-fields">
+        <div v-if="mail" class="flex mail-template">
+            <div class="mails-fields mb-3 w-1/2 pr-4">
                 <h4 class="title">Selected mail: {{ mail.name }}</h4>
 
                 <div class="mail-field" v-for="(arg, index) in mail.args" :key="arg.id">
                     <div class="form-group mail-field__wrapper mail-field__wrapper--nova" v-if="arg.nova">
-                        <label class="form-label mail-field__label">Mail class argument {{ index + 1 }}: ({{ arg.model }})</label>
+                        <label class="form-label mail-field__label">Mail class argument {{ index + 1 }}: ({{ arg.label || arg.model }})</label>
 
                         <select class="form-control" v-model="arg.value">
                             <option value="">Choose option</option>
@@ -28,10 +28,12 @@
 
                         <select class="form-control" v-model="arg.value" v-if="arg.type === 'select'">
                             <option value="">Choose option</option>
-                            <option v-for="item in arg.options" :key="item.value" :value="item.value">{{ item.label || item.value }}</option>
+                            <option v-for="(label, value) in arg.options" :key="value" :value="value">{{ label || value }}</option>
                         </select>
 
-                         <input type="text" class="form-control" v-model="arg.value" v-if="arg.type === 'text'" />
+                         <input type="text" class="form-control" :placeholder="arg.placeholder" v-model="arg.value" v-if="arg.type === 'text'" />
+
+                         <textarea :rows="arg.rows || 3" class="form-control" :placeholder="arg.placeholder" v-model="arg.value" v-if="arg.type === 'textarea'" />
                     </div>
                 </div>
 
@@ -40,12 +42,12 @@
                     <input type="email" class="form-control" v-model="mail.email" />
                 </div>
 
-                <button class="btn btn--primary" @click.prevent="handleSendMail">Send mail</button>
+                <button class="btn btn-default btn-primary" @click.prevent="handleSendMail">Send mail</button>
 
-                <button class="btn btn--primary" @click.prevent="handleViewMail">View mail</button>
+                <button class="btn btn-default btn-primary ml-2" @click.prevent="handleViewMail">View mail</button>
             </div>
 
-            <div class="mail-test-frame" v-if="mailFrameSrc">
+            <div class="mail-test-frame pl-4" v-if="mailFrameSrc">
                 <iframe ref="mail-frame" :src="mailFrameSrc" />
             </div>
         </div>
@@ -115,8 +117,19 @@ export default {
 /* Scoped Styles */
 .mail-test-frame iframe {
     width: 100%;
-    height: 400px;
+    height: 500px;
     border: 1px solid #ccc;
+}
+
+.mail-template {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.mail-test-frame {
+    flex-grow: 1;
 }
 
 .form-group {
@@ -136,5 +149,12 @@ export default {
     color: #000;
     padding: 0 10px;
     min-height: 40px;
+}
+textarea.form-control {
+    height: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    max-width: 100%;
+    min-width: 100%;
 }
 </style>
