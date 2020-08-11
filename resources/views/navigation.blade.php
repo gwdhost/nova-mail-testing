@@ -4,3 +4,10 @@
         Mail Testing
     </span>
 </router-link>
+{{-- <ul class="list-reset mb-8">
+    <li class="leading-tight mb-4 ml-8 text-sm">
+        <router-link :to="{name: 'mail-testing-send'}" class="text-white text-justify no-underline dim">
+            Send mail
+        </router-link>
+    </li>
+</ul> --}}

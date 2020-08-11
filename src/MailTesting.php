@@ -14,8 +14,7 @@ class MailTesting extends Tool
      */
     public function boot()
     {
-        Nova::script('mail-testing', __DIR__.'/../dist/js/tool.js');
-        Nova::style('mail-testing', __DIR__.'/../dist/css/tool.css');
+
     }
 
     /**

@@ -61,6 +61,7 @@ export default {
             mails: [],
             mailFrameSrc: null,
             loading: false,
+            t: 0,
             selected_mail_id: null
         };
     },
@@ -92,8 +93,9 @@ export default {
         },
         handleViewMail(){
             const mail = this.mail;
+            this.t += 1;
 
-            let mailFrameSrc = "/nova-vendor/mail-testing/view-email/?mail_id=" + mail.id;
+            let mailFrameSrc = "/nova-vendor/mail-testing/view-email/?mail_id=" + mail.id + "&t=" + this.t;
 
             mail.args.forEach(arg => {
                 mailFrameSrc += '&args[]=' + arg.value;
